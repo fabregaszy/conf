@@ -3,7 +3,13 @@
 "create time: 2011.12.15 20:00 p.m.
 
 "配色方案
-colorscheme evening
+if has('gui_running')
+	colorscheme solarized
+	set background=light
+else
+	colorscheme evening
+	set background=dark
+endif
 "语法高亮
 syntax enable
 "允许替换默认方案
@@ -52,5 +58,7 @@ set shellslash
 "=======2012/3/13 UPDATE==========
 "显示换行符等隐藏符号
 "set list
-"highlight the current line
+"=======2012/10/13 UPDATE=========
+set guifont=consolas:h14
+" 2012/10/29
 set cursorline
