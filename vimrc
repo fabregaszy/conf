@@ -62,3 +62,7 @@ set shellslash
 set guifont=consolas:h14
 " 2012/10/29
 set cursorline
+"=======2012/11/6 UPDATE==========
+"file encoding
+set fileencodings=utf-8,euc-jp,gb2312,gb18030,gbk,cp936,latin1
+set encoding=utf-8
