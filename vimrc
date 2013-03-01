@@ -15,10 +15,10 @@ syntax enable
 "允许替换默认方案
 syntax on
 
-"设置制表符占用空格数
+"1 tab => 4 spaces
 set tabstop=4
 set shiftwidth=4
-set noexpandtab
+set expandtab
 
 "开启行号显示
 set number
