@@ -15,10 +15,10 @@ syntax enable
 "允许替换默认方案
 syntax on
 
-"1 tab => 4 spaces
+"设置制表符占用空格数
 set tabstop=4
 set shiftwidth=4
-set expandtab
+set noexpandtab
 
 "开启行号显示
 set number
@@ -59,10 +59,20 @@ set shellslash
 "显示换行符等隐藏符号
 "set list
 "=======2012/10/13 UPDATE=========
-set guifont=consolas:h14
+set guifont=Source\ Code\ Pro\ for\ Powerline:h12
+"set guifont=Consolas\ for\ Powerline:h14
 " 2012/10/29
 set cursorline
 "=======2012/11/6 UPDATE==========
 "file encoding
 set fileencodings=utf-8,euc-jp,gb2312,gb18030,gbk,cp936,latin1
 set encoding=utf-8
+"=======2013/3/23/ UPDATE=========
+call pathogen#infect()
+"always show the GUI toolbar
+set guioptions=T
+set laststatus=2
+"powerline{
+let g:Powerline_colorsheme='solarized256'
+let g:Powerline_symbols='fancy'
+"}
