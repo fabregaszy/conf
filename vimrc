@@ -31,8 +31,13 @@ set nocompatible
 "显示当前输入的命令
 set showcmd
 
-"=======2012/1/28 UPDATE==========
-filetype on
+"=======2013/4/29 UPDATE==========
+"set different tab for ruby and js
+if has("autocmd")
+	filetype on
+	autocmd FileType ruby setlocal ts=2 sts=2 sw=2 et
+	autocmd FileType javascript setlocal ts=4 sts=4 sw=4 noet
+endif
 filetype plugin on
 filetype indent on
 "=======2012/1/30 UPDATE==========
