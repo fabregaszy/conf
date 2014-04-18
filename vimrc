@@ -81,3 +81,39 @@ set laststatus=2
 let g:Powerline_colorsheme='solarized256'
 let g:Powerline_symbols='fancy'
 "}
+"=======2014/4/18 UPDATE=========
+" auto add file info template
+function AddFileInfoForC()
+		call append(0, "/****************************************************************************")
+		call append(1, "*                                                                           *")
+		call append(2, "*  ソース名:                                                                *")
+		call append(3, "*  概要    :                                                                *")
+		call append(4, "*                                                                           *")
+		call append(5, "*                           COPYRIGHT ".strftime("%Y")."                                  *") 
+		call append(6, "* ***************************************************************************")
+		call append(7, "*  更新履歴：                                                               *")
+		call append(8, "*  版数　   改造年月日    改造者        改版内容                            *")
+		call append(9, "* ------------------------------------------------------------------------- *")
+		call append(10, "****************************************************************************/")
+endf
+
+function AddFileInfoForRuby()
+		call append(0, "#====================================================")
+		call append(1, "#-      Description: ")
+		call append(2, "#-      Author     : Zhang Yan")
+		call append(3, "#-      Version    : ")
+		call append(4, "#-      Date       : ".strftime("%Y-%m-%d"))
+		call append(5, "#====================================================")
+endf
+
+function AddFileInfo()
+		if &filetype=="c"
+				call AddFileInfoForC()
+		elseif &filetype=="cpp"
+				call AddFileInfoForC()
+		elseif &filetype=="ruby"
+				call AddFileInfoForRuby()
+		endif
+endf
+
+map <F4> :call AddFileInfo()<CR>
