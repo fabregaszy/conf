@@ -118,3 +118,7 @@ function AddFileInfo()
 endf
 
 map <F4> :call AddFileInfo()<CR>
+
+"=======2014/5/23 UPDATE=========
+" symbol seting for 'set list' command
+set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
