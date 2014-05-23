@@ -68,10 +68,11 @@ set guifont=Source\ Code\ Pro\ for\ Powerline:h12
 "set guifont=Consolas\ for\ Powerline:h14
 " 2012/10/29
 set cursorline
-"=======2012/11/6 UPDATE==========
+"=======2014/05/23 UPDATE==========
 "file encoding
-set fileencodings=utf-8,euc-jp,gb2312,gb18030,gbk,cp936,latin1
 set encoding=utf-8
+set termencoding=utf-8 " for tty display
+set fileencodings=usc-bom,utf-8,euc-jp,gb2312,gb18030,gbk,cp936,latin1
 "=======2013/3/23/ UPDATE=========
 call pathogen#infect()
 "always show the GUI toolbar
