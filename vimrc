@@ -66,8 +66,10 @@ set shellslash
 "=======2012/10/13 UPDATE=========
 set guifont=Source\ Code\ Pro\ for\ Powerline:h12
 "set guifont=Consolas\ for\ Powerline:h14
-" 2012/10/29
+" 2014/05/28
 set cursorline
+" color column at 80
+set cc=80
 "=======2014/05/23 UPDATE==========
 "file encoding
 set encoding=utf-8
