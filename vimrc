@@ -124,3 +124,10 @@ map <F4> :call AddFileInfo()<CR>
 "=======2014/5/23 UPDATE=========
 " symbol seting for 'set list' command
 set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
+
+"=======2014/07/17 UPDATE=========
+function EnterReviewMode()
+	set guifont=Monaco:h14:cANSI
+endf
+
+map <F5> :call EnterReviewMode()<CR>
