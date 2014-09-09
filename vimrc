@@ -131,3 +131,9 @@ function EnterReviewMode()
 endf
 
 map <F5> :call EnterReviewMode()<CR>
+
+"==== Use lightline instead of Powerline
+"lightline settings
+let g:lightline = {
+\ 'colorscheme': 'wombat',
+\ }
