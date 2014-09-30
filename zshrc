@@ -83,5 +83,3 @@ alias grep="grep --color=auto"
 
 # Exports
 # for Qujing Connection
-export http_proxy='http://theironislands.f.getqujing.net:47829'
-export https_proxy='http://theironislands.f.getqujing.net:47829'
