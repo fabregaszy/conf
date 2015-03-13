@@ -1,15 +1,42 @@
-"zhangyan's vimrc
-"author zhangyan
-"create time: 2011.12.15 20:00 p.m.
+" vim configuration
+" Zhangyan(fabregaszy) 
+" latest update: 2015/03/01
 
-"配色方案
+" use vundle to manage plugins
+" for more details, visit https://github.com/gmarik/Vundle.vim
+
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+" call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+" lightline
+Plugin 'itchyny/lightline.vim'
+" solarized color
+Plugin 'altercation/vim-colors-solarized'
+
+call vundle#end()            " required
+filetype plugin indent on    " required
+
+" always show the GUI toolbar
+set guioptions=T
+set laststatus=2
+
+" color scheme
 if has('gui_running')
 	colorscheme solarized
+	" font
+	set guifont=Monaco:h12
 	set background=light
-else
-	colorscheme evening
-	set background=dark
 endif
+
+
 "语法高亮
 syntax enable
 "允许替换默认方案
@@ -26,114 +53,16 @@ set number
 set hlsearch
 "实时搜索
 set incsearch
-"关闭兼容模式
-set nocompatible
 "显示当前输入的命令
 set showcmd
 
-"=======2013/4/29 UPDATE==========
-"set different tab for ruby and js
-if has("autocmd")
-	filetype on
-	autocmd FileType ruby setlocal ts=2 sts=2 sw=2 et
-	autocmd FileType javascript setlocal ts=4 sts=4 sw=4 noet
-endif
-filetype plugin on
-filetype indent on
-"=======2012/1/30 UPDATE==========
-"自动打开taglist窗口
-:let Tlist_Auto_Open=1 
-"如果taglist是最后一个窗口，则退出vim
-:let Tlist_Exit_OnlyWindow=1
-"=======2012/2/3 UPDATE===========
-"自动缩进
-set autoindent
-"显示标尺和当前输入的命令信息
 set ruler
-set showcmd
-set showmatch
-set ignorecase
-"=======2012/2/4 UPDATE===========
-"for vim-latex suite
-:let g:tex_flavor='latex'
-set shellslash
-"=======2012/2/28 UPDATE==========
-"调整Tlist的宽度
-:let Tlist_WinWidth=25
-"=======2012/3/13 UPDATE==========
-"显示换行符等隐藏符号
-"set list
-"=======2012/10/13 UPDATE=========
-set guifont=Source\ Code\ Pro\ for\ Powerline:h12
-"set guifont=Consolas\ for\ Powerline:h14
-" 2014/05/28
 set cursorline
-" color column at 80
-set cc=80
-"=======2014/05/23 UPDATE==========
-"file encoding
+set colorcolumn=100
+
+" file encoding settings
 set encoding=utf-8
 set termencoding=utf-8 " for tty display
 set fileencodings=usc-bom,utf-8,euc-jp,gb2312,gb18030,gbk,cp936,latin1
-"=======2013/3/23/ UPDATE=========
-call pathogen#infect()
-"always show the GUI toolbar
-set guioptions=T
-set laststatus=2
-"powerline{
-let g:Powerline_colorsheme='solarized256'
-let g:Powerline_symbols='fancy'
-"}
-"=======2014/4/18 UPDATE=========
-" auto add file info template
-function AddFileInfoForC()
-		call append(0, "/****************************************************************************")
-		call append(1, "*                                                                           *")
-		call append(2, "*  ソース名:                                                                *")
-		call append(3, "*  概要    :                                                                *")
-		call append(4, "*                                                                           *")
-		call append(5, "*                           COPYRIGHT ".strftime("%Y")."                                  *") 
-		call append(6, "* ***************************************************************************")
-		call append(7, "*  更新履歴：                                                               *")
-		call append(8, "*  版数　   改造年月日    改造者        改版内容                            *")
-		call append(9, "* ------------------------------------------------------------------------- *")
-		call append(10, "****************************************************************************/")
-endf
 
-function AddFileInfoForRuby()
-		call append(0, "#====================================================")
-		call append(1, "#-      Description: ")
-		call append(2, "#-      Author     : Zhang Yan")
-		call append(3, "#-      Version    : ")
-		call append(4, "#-      Date       : ".strftime("%Y-%m-%d"))
-		call append(5, "#====================================================")
-endf
 
-function AddFileInfo()
-		if &filetype=="c"
-				call AddFileInfoForC()
-		elseif &filetype=="cpp"
-				call AddFileInfoForC()
-		elseif &filetype=="ruby"
-				call AddFileInfoForRuby()
-		endif
-endf
-
-map <F4> :call AddFileInfo()<CR>
-
-"=======2014/5/23 UPDATE=========
-" symbol seting for 'set list' command
-set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
-
-"=======2014/07/17 UPDATE=========
-function EnterReviewMode()
-	set guifont=Monaco:h14:cANSI
-endf
-
-map <F5> :call EnterReviewMode()<CR>
-
-"==== Use lightline instead of Powerline
-"lightline settings
-let g:lightline = {
-\ 'colorscheme': 'wombat',
-\ }
