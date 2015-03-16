@@ -20,7 +20,13 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'itchyny/lightline.vim'
 " solarized color
 Plugin 'altercation/vim-colors-solarized'
-
+" Go-Lang support
+Plugin 'fatih/vim-go'
+" other plugins
+Plugin 'plasticboy/vim-markdown'
+Plugin 'vim-ruby/vim-ruby'
+Plugin 'tomasr/molokai'
+Plugin 'scrooploose/nerdtree'
 call vundle#end()            " required
 filetype plugin indent on    " required
 

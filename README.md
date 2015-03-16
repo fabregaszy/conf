@@ -7,4 +7,4 @@ My configuration files
 2. bashrc
 3. zshrc (using with oh-my-zsh)
 
-2014 Zhang Yan
+2015 Zhang Yan
