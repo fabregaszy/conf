@@ -26,7 +26,8 @@ Plugin 'fatih/vim-go'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'tomasr/molokai'
-Plugin 'scrooploose/nerdtree'
+Plugin 'scrooloose/nerdtree'
+Plugin 'vim-scripts/taglist.vim'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
@@ -65,10 +66,15 @@ set showcmd
 set ruler
 set cursorline
 set colorcolumn=100
+set wildmenu
 
 " file encoding settings
 set encoding=utf-8
 set termencoding=utf-8 " for tty display
 set fileencodings=usc-bom,utf-8,euc-jp,gb2312,gb18030,gbk,cp936,latin1
 
-
+" Tag list config
+let Tlist_Show_One_File=1
+let Tlist_Exit_OnlyWindow=1
+let Tlist_Use_Right_Window=1
+map <silent> <F9> :TlistToggle<cr>
