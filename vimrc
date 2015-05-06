@@ -28,6 +28,9 @@ Plugin 'vim-ruby/vim-ruby'
 Plugin 'tomasr/molokai'
 Plugin 'scrooloose/nerdtree'
 Plugin 'vim-scripts/taglist.vim'
+Plugin 'jiangxincode/mpi.vim'
+Plugin 'octol/vim-cpp-enhanced-highlight'
+Plugin 'justinmk/vim-syntax-extra'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
@@ -37,10 +40,9 @@ set laststatus=2
 
 " color scheme
 if has('gui_running')
-	colorscheme solarized
-	" font
+	colorscheme molokai
 	set guifont=Monaco:h12
-	set background=light
+	"set background=light
 endif
 
 
@@ -56,6 +58,7 @@ set noexpandtab
 
 "开启行号显示
 set number
+set numberwidth=5
 "高亮搜索结果
 set hlsearch
 "实时搜索
@@ -65,8 +68,14 @@ set showcmd
 
 set ruler
 set cursorline
+" windows size when open a file
+set lines=80
+set columns=120
 set colorcolumn=100
 set wildmenu
+set wildmode=longest:list,full
+" Display extra whitespace
+set list listchars=tab:»·,trail:·
 
 " file encoding settings
 set encoding=utf-8
