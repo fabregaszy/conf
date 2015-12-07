@@ -1,6 +1,6 @@
 " vim configuration
 " Zhangyan(fabregaszy) 
-" latest update: 2015/03/01
+" latest update: 2015/12/07
 
 " use vundle to manage plugins
 " for more details, visit https://github.com/gmarik/Vundle.vim
@@ -32,7 +32,15 @@ Plugin 'jiangxincode/mpi.vim'
 Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'justinmk/vim-syntax-extra'
 call vundle#end()            " required
-filetype plugin indent on    " required
+
+filetype plugin on    " required
+filetype indent on    " required
+
+" auto reload when a file is changed from outside
+set autoread
+
+" Sets how many lines of history VIM has to remember
+set history=500
 
 " always show the GUI toolbar
 set guioptions=T
@@ -59,23 +67,29 @@ set noexpandtab
 "开启行号显示
 set number
 set numberwidth=5
+
+" Search related configurations
 "高亮搜索结果
 set hlsearch
 "实时搜索
 set incsearch
+" smart about cases
+set smartcase
+
 "显示当前输入的命令
 set showcmd
 
 set ruler
 set cursorline
 " windows size when open a file
-set lines=80
-set columns=120
 set colorcolumn=100
+
+" Turn on the WiLd menu
 set wildmenu
 set wildmode=longest:list,full
+
 " Display extra whitespace
-set list listchars=tab:»·,trail:·
+" set list listchars=tab:»·,trail:·
 
 " file encoding settings
 set encoding=utf-8
@@ -87,3 +101,14 @@ let Tlist_Show_One_File=1
 let Tlist_Exit_OnlyWindow=1
 let Tlist_Use_Right_Window=1
 map <silent> <F9> :TlistToggle<cr>
+
+" :W sudo saves the file
+command W w !sudo tee % > /dev/null
+
+" enable mouse
+if has('mouse')
+	set mouse=a
+endif
+
+" matching brackets
+set showmatch
