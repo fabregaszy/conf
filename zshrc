@@ -1,5 +1,8 @@
+# Zhang Yan zsh config file
+# updated 2016.08.27
+#
 # Path to your oh-my-zsh installation.
-export ZSH=$HOME/.oh-my-zsh
+export ZSH=/Users/zhangyan/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -14,7 +17,7 @@ ZSH_THEME="robbyrussell"
 # DISABLE_AUTO_UPDATE="true"
 
 # Uncomment the following line to change how often to auto-update (in days).
-export UPDATE_ZSH_DAYS=13
+# export UPDATE_ZSH_DAYS=13
 
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
@@ -45,17 +48,18 @@ export UPDATE_ZSH_DAYS=13
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(brew git mvn ruby osx z pip colored-man colored-man-pages)
+
+# User configuration
+export CLICOLOR=1
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+# export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
 
-# User configuration
-
-export PATH=$HOME/bin:/usr/local/bin:$PATH
-# export MANPATH="/usr/local/man:$MANPATH"
-
 # You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -75,11 +79,75 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
-# My aliases
 alias zshconfig="mvim ~/.zshrc"
 alias ohmyzsh="mvim ~/.oh-my-zsh"
-alias grep="grep --color=auto"
+
+# prevent history sharing between several term window
+# history settings
+unsetopt share_history
+HISTSIZE=4096
+SAVEHIST=4096
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+export PATH="/usr/local/git/bin":$PATH
+export PATH="/usr/local/sbin":$PATH
+
+# Go Env
+export PATH=$PATH:/usr/local/opt/go/libexec/bin
+
+# Java Path
+export JAVA_HOME=$(/usr/libexec/java_home)
+
+# Maven
+export M2_HOME="$HOME/Tools/apache-maven"
+export MAVEN_BIN="$M2_HOME/bin"
+export PATH=$PATH:$MAVEN_BIN
+
+# open-mpi
+# export PATH="/usr/local/Cellar/open-mpi/1.8.4/bin":$PATH
+
+# boost
+export BOOST_ROOT="/usr/local/boost"
+
+# gcc compiler setting
+export CC="/usr/local/Cellar/gcc/5.3.0/bin/gcc-5"
+export CXX="/usr/local/Cellar/gcc/5.3.0/bin/g++-5"
+export C_INCLUDE_PATH="/usr/local/include:/usr/local/boost"
+export CPLUS_INCLUDE_PATH="/usr/local/include:/usr/local/boost"
+export MPI_LIBRARY="/usr/local/lib"
+
+# CUDA
+export PATH=/Developer/NVIDIA/CUDA-7.5/bin:$PATH
+export DYLD_LIBRARY_PATH=/Developer/NVIDIA/CUDA-7.5/lib:$DYLD_LIBRARY_PATH
+
+# nvm / node.js
+export NVM_DIR="/Users/zhangyan/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+# personal functions
+use_clang () {
+	export CC=clang
+	export CXX=clang++
+	echo "Compiler has changed to clang/clang++"
+}
+
+use_gcc () {
+	export CC="/usr/local/Cellar/gcc/5.3.0/bin/gcc-5"
+	export CXX="/usr/local/Cellar/gcc/5.3.0/bin/g++-5"
+	echo "Compiler has changed to gcc/g++"
+}
 
 
-# Exports
-# for Qujing Connection
+# homebrew bottle source
+export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles
+
+# personal alias
+alias tailf="tail -f"
+# docker alias
+remove_stopped_docker () {
+	docker rm $(docker ps -aq)
+}
+
+# pyenv
+export PYENV_ROOT=/usr/local/var/pyenv
+if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
